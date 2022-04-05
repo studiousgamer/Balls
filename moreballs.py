@@ -1,10 +1,6 @@
 letters = ['B', 'A', 'L', 'L', 'S']
-ball = ''
+ball = ''.join(letters)
 
-for letter in letters:
-    ball += letter
 print(ball)
-ball = ''
-for letter in letters[::-1]:
-    ball += letter
+ball = ''.join(letters[::-1])
 print(ball)

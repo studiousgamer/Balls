@@ -18,13 +18,17 @@ class RedditMemes(BallsCommands.Cog):
         )
         memes = reddit.subreddit('dankmemes').hot()
         post_to_pick = random.randint(1, 100)
-        for i in range(post_to_pick):
+        for _ in range(post_to_pick):
             submission = next(x for x in memes if not x.stickied)
         ballsEmbed = discord.Embed(
             color=0x842899
         )
-        ballsEmbed.add_field(name=f'New post in r/balls',
-                            value=f'[{submission.title}](https://reddit.com{submission.permalink})', inline=False)
+        ballsEmbed.add_field(
+            name='New post in r/balls',
+            value=f'[{submission.title}](https://reddit.com{submission.permalink})',
+            inline=False,
+        )
+
         ballsEmbed.add_field(name='Author:', value=f'u/{submission.author}(jk its u/balls)', inline=False)
         ballsEmbed.set_image(url=submission.url)
         ballsEmbed.set_footer(text=f'''{submission.score}👍 | {submission.num_comments}💬''')
